@@ -35,12 +35,39 @@ public class BorrowHistoryServiceImpl implements BorrowHistoryService {
         Book book = findBook(request.getBookId());
         validateBorrowBook(request, borrower, book);
         saveBorrowBook(request, borrower, book);
-        updateStockBook(book);
+        decreaseStockBook(book);
+    }
+
+    @Override
+    @Transactional
+    public void updateBorrowHistory(String id) {
+        BorrowHistory borrowHistory = findBorrowHistory(id);
+        Book book = findBook(borrowHistory.getBook().getId());
+        updateStatusBorrowHistory(borrowHistory);
+        increaseStockBook(book);
     }
 
 
-    void updateStockBook(Book book){
+    void updateStatusBorrowHistory(BorrowHistory borrowHistory){
+        if(!borrowHistory.getStatus().equals(BookStatus.BORROWED.name())){
+            throw new BusinessException("Book lending has been completed");
+        }
+
+        LocalDate dateNow = LocalDate.now();
+        if(dateNow.isBefore(borrowHistory.getReturnDate()) || dateNow.isEqual(borrowHistory.getReturnDate())){
+            borrowHistory.setStatus(BookStatus.ON_TIME.name());
+        }
+        else{
+            borrowHistory.setStatus(BookStatus.LATE.name());
+        }
+    }
+    void decreaseStockBook(Book book){
         book.setStock(book.getStock() - 1);
+        bookRepository.save(book);
+    }
+
+    void increaseStockBook(Book book){
+        book.setStock(book.getStock() + 1);
         bookRepository.save(book);
     }
 
@@ -85,6 +112,14 @@ public class BorrowHistoryServiceImpl implements BorrowHistoryService {
             throw new BusinessException("Book is not exist");
         }
         return optionalBook.get();
+    }
+
+    private BorrowHistory findBorrowHistory(String id){
+        Optional<BorrowHistory> borrowHistoryOptional = borrowHistoryRepository.findById(id);
+        if(borrowHistoryOptional.isEmpty()){
+            throw new BusinessException("Record data not found");
+        }
+        return borrowHistoryOptional.get();
     }
 
 }

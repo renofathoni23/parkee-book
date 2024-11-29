@@ -5,4 +5,5 @@ import com.example.parkee_book_library.dto.request.BorrowRequest;
 
 public interface BorrowHistoryService {
     void borrowBook(BorrowBookRequest request);
+    void updateBorrowHistory(String id);
 }
