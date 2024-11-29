@@ -1,8 +1,8 @@
 package com.example.parkee_book_library.controller;
 
 import com.example.parkee_book_library.dto.BaseResponse;
-import com.example.parkee_book_library.dto.request.BookRequest;
-import com.example.parkee_book_library.service.BookService;
+import com.example.parkee_book_library.dto.request.BorrowBookRequest;
+import com.example.parkee_book_library.service.BorrowHistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,15 +10,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/book")
-public class BookController {
+@RequestMapping("/borrow-book")
+public class BorrowHistoryController {
 
     @Autowired
-    private BookService bookService;
+    private BorrowHistoryService borrowHistoryService;
+
 
     @PostMapping
-    public BaseResponse createBook(@RequestBody BookRequest bookRequest){
-        bookService.create(bookRequest);
-        return BaseResponse.success("Booked created successfully", "ok");
+    public BaseResponse borrowBook(@RequestBody BorrowBookRequest request){
+        borrowHistoryService.borrowBook(request);
+        return BaseResponse.success("Borrow book data created successfully", "ok");
     }
 }
