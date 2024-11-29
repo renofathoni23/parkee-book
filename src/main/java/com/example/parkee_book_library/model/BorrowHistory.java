@@ -1,5 +1,6 @@
 package com.example.parkee_book_library.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,10 +22,12 @@ public class BorrowHistory extends BaseEntity{
     private String id;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
     @JoinColumn(name = "borrower_id", referencedColumnName = "id", nullable = false)
     private Borrower borrower;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
     @JoinColumn(name = "book_id", referencedColumnName = "id", nullable = false)
     private Book book;
 
