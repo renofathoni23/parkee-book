@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.Optional;
 
@@ -49,7 +49,7 @@ public class BorrowHistoryServiceImpl implements BorrowHistoryService {
         borrowHistory.setBorrower(borrower);
         borrowHistory.setBook(book);
         borrowHistory.setStatus(BookStatus.BORROWED.name());
-        borrowHistory.setBorrowDate(LocalDateTime.now());
+        borrowHistory.setBorrowDate(LocalDate.now());
         borrowHistory.setReturnDate(request.getReturnDate());
         borrowHistoryRepository.save(borrowHistory);
     }
@@ -64,8 +64,8 @@ public class BorrowHistoryServiceImpl implements BorrowHistoryService {
             throw new BusinessException("Borrower have still borrow other book");
         }
 
-        LocalDateTime currentTime = LocalDateTime.now();
-        Long daysBetween = ChronoUnit.DAYS.between(currentTime, request.getReturnDate());
+        LocalDate currentDate = LocalDate.now();
+        Long daysBetween = ChronoUnit.DAYS.between(currentDate, request.getReturnDate());
         if(daysBetween > 30){
             throw new BusinessException("The return date must be less than 30 days");
         }

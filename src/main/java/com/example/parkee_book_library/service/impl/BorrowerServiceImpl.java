@@ -22,7 +22,6 @@ public class BorrowerServiceImpl implements BorrowerService {
         borrower.setName(request.getName());
         borrower.setKtpNumber(request.getKtpNumber());
         borrower.setEmail(request.getEmail());
-        borrower.setCreatedAt(LocalDateTime.now());
         borrowerRepository.save(borrower);
     }
 
