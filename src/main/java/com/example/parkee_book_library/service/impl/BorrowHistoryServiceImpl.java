@@ -56,14 +56,38 @@ public class BorrowHistoryServiceImpl implements BorrowHistoryService {
     }
 
     @Override
-    public CustomPageResponse<BorrowHistoryResponse> getBorrowHistory(Pageable pageable) {
-        Page<BorrowHistory> borrowHistories = borrowHistoryRepository.findAll(pageable);
+    public CustomPageResponse<BorrowHistoryResponse> getBorrowHistory(String status, Pageable pageable) {
+        Page<BorrowHistory> borrowHistories = getDataBorrowHistory(status, pageable);
         CustomPageResponse<BorrowHistoryResponse> customPageResponse = new CustomPageResponse<>();
         customPageResponse.setPage(pageable.getPageNumber() + 1);
         customPageResponse.setSize(pageable.getPageSize());
         customPageResponse.setTotalData(borrowHistories.getTotalElements());
         customPageResponse.setData(convertBorrowHistory(borrowHistories.getContent()));
         return customPageResponse;
+    }
+
+    private Page<BorrowHistory> getDataBorrowHistory(String status, Pageable pageable){
+        Page<BorrowHistory> borrowHistories;
+        if(status.trim().isEmpty()){
+            borrowHistories = borrowHistoryRepository.findAll(pageable);
+        }
+        else{
+            checkStatus(status);
+            borrowHistories = borrowHistoryRepository.findByStatusPageable(status, pageable);
+        }
+        return borrowHistories;
+    }
+    private void checkStatus(String status){
+        boolean isStatusExist = false;
+        for(BookStatus bookStatus: BookStatus.values()){
+            if(bookStatus.name().equalsIgnoreCase(status)){
+                isStatusExist = true;
+            }
+        }
+
+        if(!isStatusExist){
+            throw new BusinessException("Book status type not found");
+        }
     }
 
     private List<BorrowHistoryResponse> convertBorrowHistory(List<BorrowHistory> borrowHistoryList){

@@ -10,5 +10,5 @@ import org.springframework.data.domain.Pageable;
 public interface BorrowHistoryService {
     void borrowBook(BorrowBookRequest request);
     void updateBorrowHistory(String id);
-    CustomPageResponse<BorrowHistoryResponse> getBorrowHistory(Pageable pageable);
+    CustomPageResponse<BorrowHistoryResponse> getBorrowHistory(String status, Pageable pageable);
 }

@@ -35,11 +35,12 @@ public class BorrowHistoryController {
     public BaseResponse getData(@RequestParam(value = "page", defaultValue = "1") int page,
                                 @RequestParam(value = "size", defaultValue = "10") int size,
                                 @RequestParam(value = "sortBy", defaultValue = "createdAt") String sortBy,
-                                @RequestParam(value = "sortDirection", defaultValue = "DESC") String sortDirection
+                                @RequestParam(value = "sortDirection", defaultValue = "DESC") String sortDirection,
+                                @RequestParam(value = "status", defaultValue = "") String status
                                 ){
         Sort.Direction direction = Sort.Direction.fromString(sortDirection.toUpperCase());
         Pageable pageable = PageRequest.of(page-1, size, Sort.by(direction, sortBy));
-        CustomPageResponse<BorrowHistoryResponse> data = borrowHistoryService.getBorrowHistory(pageable);
+        CustomPageResponse<BorrowHistoryResponse> data = borrowHistoryService.getBorrowHistory(status,pageable);
         return BaseResponse.success("fetch data successfully", data);
     }
 }
