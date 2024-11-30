@@ -11,12 +11,10 @@ public class GlobalExceptionHandle {
 
     @ExceptionHandler(BusinessException.class)
     public ResponseEntity<BaseResponse<String>> handleGeneralException(BusinessException ex) {
-        // Return the error message from the exception in the response
         BaseResponse<String> response = BaseResponse.error(ex.getMessage());
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST); // 400 Bad Request
     }
 
-    // Handle other generic exceptions, like unexpected server errors
     @ExceptionHandler(Exception.class)
     public ResponseEntity<BaseResponse<String>> handleGenericException(Exception ex) {
         BaseResponse<String> response = BaseResponse.error("Internal Server Error: " + ex.getMessage());

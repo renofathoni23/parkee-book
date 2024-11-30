@@ -4,7 +4,6 @@ import com.example.parkee_book_library.dto.BaseResponse;
 import com.example.parkee_book_library.dto.CustomPageResponse;
 import com.example.parkee_book_library.dto.request.BorrowBookRequest;
 import com.example.parkee_book_library.dto.response.BorrowHistoryResponse;
-import com.example.parkee_book_library.model.BorrowHistory;
 import com.example.parkee_book_library.service.BorrowHistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
