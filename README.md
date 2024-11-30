@@ -13,6 +13,7 @@ spring.datasource.username=myuser
 spring.datasource.password=mypassword
 ```
 3. Run the Application
+4. Download postman collection on `resources/Parkee.postman_collection.json`
 
 
 ## Database Schema (DDL)
