@@ -1,0 +1,594 @@
+{
+	"info": {
+		"_postman_id": "413ea54a-4d0d-41e0-8aaa-06f8d952c87a",
+		"name": "Parkee",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27359280"
+	},
+	"item": [
+		{
+			"name": "Create Book",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\":\"buku baru\",\n    \"isbn\":\"1234567890123\",\n    \"stock\":100\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{local}}/book",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"book"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\":\"cihuy\",\n    \"isbn\":\"1234567890122\",\n    \"stock\":5\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/book",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"book"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"success\",\n    \"message\": \"Booked created successfully\",\n    \"data\": \"ok\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Book",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\":\"buku baru\",\n    \"isbn\":\"1234567890123\",\n    \"stock\":100\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{local}}/book?page=1&size=10",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"book"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "size",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\":\"buku baru\",\n    \"isbn\":\"1234567890123\",\n    \"stock\":100\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/book?page=1&size=10",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"book"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"success\",\n    \"message\": \"fetch data successfully\",\n    \"data\": {\n        \"data\": [\n            {\n                \"createdAt\": \"2024-11-30T11:57:48.183937\",\n                \"id\": \"255e2069-473f-48ce-b2e3-aa62e9143500\",\n                \"title\": \"buku baru\",\n                \"isbn\": \"1234567890123\",\n                \"stock\": 99\n            },\n            {\n                \"createdAt\": \"2024-11-29T18:35:18.279175\",\n                \"id\": \"69cb2004-c617-4980-9b46-3bf726a17f26\",\n                \"title\": \"cihuy\",\n                \"isbn\": \"1234567890122\",\n                \"stock\": 7\n            }\n        ],\n        \"page\": 1,\n        \"size\": 10,\n        \"totalData\": 2\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Create Borrower",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"ktpNumber\":\"1234567890123451\",\n    \"name\":\"anto\",\n    \"email\":\"mantap@gmail.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{local}}/borrower",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"borrower"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"ktpNumber\":\"1234567890123456\",\n    \"name\":\"reno\",\n    \"email\":\"renof@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/borrower",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"borrower"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"success\",\n    \"message\": \"Borrower data created successfully\",\n    \"data\": \"ok\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Borrower",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"ktpNumber\":\"1234567890123455\",\n    \"name\":\"reno\",\n    \"email\":\"renofathoni@gmail.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{local}}/borrower?page=1&size=10",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"borrower"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "size",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"ktpNumber\":\"1234567890123455\",\n    \"name\":\"reno\",\n    \"email\":\"renofathoni@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/borrower?page=1&size=10",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"borrower"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"success\",\n    \"message\": \"fetch data successfully\",\n    \"data\": {\n        \"data\": [\n            {\n                \"createdAt\": \"2024-11-30T12:17:52.467195\",\n                \"id\": 3,\n                \"ktpNumber\": \"1234567890123451\",\n                \"name\": \"anto\",\n                \"email\": \"mantap@gmail.com\"\n            },\n            {\n                \"createdAt\": \"2024-11-29T18:35:45.211387\",\n                \"id\": 1,\n                \"ktpNumber\": \"1234567890123456\",\n                \"name\": \"reno\",\n                \"email\": \"renof@gmail.com\"\n            },\n            {\n                \"createdAt\": \"2024-11-30T11:55:34.39174\",\n                \"id\": 2,\n                \"ktpNumber\": \"1234567890123455\",\n                \"name\": \"reno\",\n                \"email\": \"renofathoni@gmail.com\"\n            }\n        ],\n        \"page\": 1,\n        \"size\": 10,\n        \"totalData\": 3\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Create Borrow History",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"borrowerId\":1,\n    \"bookId\":\"255e2069-473f-48ce-b2e3-aa62e9143500\",\n    \"returnDate\":\"2024-12-11\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{local}}/borrow-book",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"borrow-book"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create Borrow History",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"borrowerId\":1,\n    \"bookId\":\"69cb2004-c617-4980-9b46-3bf726a17f26\",\n    \"returnDate\":\"2024-12-11\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/borrow-book",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"borrow-book"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"success\",\n    \"message\": \"Borrow book data created successfully\",\n    \"data\": \"ok\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Update status borrowed book",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{local}}/borrow-book?id=0500aea1-0e8f-4e07-a771-1afb9e3d7730",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"borrow-book"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "0500aea1-0e8f-4e07-a771-1afb9e3d7730"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "success",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/borrow-book?id=66651ba1-5f46-4c1e-9317-6fe8a6dc15e0",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"borrow-book"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "66651ba1-5f46-4c1e-9317-6fe8a6dc15e0"
+								}
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"success\",\n    \"message\": \"Update status borrowed book successfully\",\n    \"data\": \"ok\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Borrow History",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{local}}/borrow-book?page=1&size=10&status=",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"borrow-book"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "size",
+							"value": "10"
+						},
+						{
+							"key": "sortBy",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "sortDirection",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "status",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/borrow-book?page=1&size=10&status=LATE",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"borrow-book"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								},
+								{
+									"key": "sortBy",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "sortDirection",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "status",
+									"value": "LATE"
+								}
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"success\",\n    \"message\": \"fetch data successfully\",\n    \"data\": {\n        \"data\": [\n            {\n                \"id\": \"95b3970b-2a95-44be-9f5b-fb1fe526d911\",\n                \"createdAt\": \"2024-11-30T11:58:12.841734\",\n                \"borrowDate\": \"2024-11-30\",\n                \"returnDate\": \"2024-12-11\",\n                \"borrower\": {\n                    \"id\": 1,\n                    \"name\": \"reno\",\n                    \"email\": \"renof@gmail.com\"\n                },\n                \"book\": {\n                    \"id\": \"255e2069-473f-48ce-b2e3-aa62e9143500\",\n                    \"title\": \"buku baru\",\n                    \"isbn\": \"1234567890123\"\n                },\n                \"status\": \"BORROWED\"\n            },\n            {\n                \"id\": \"0500aea1-0e8f-4e07-a771-1afb9e3d7730\",\n                \"createdAt\": \"2024-11-30T11:56:13.987177\",\n                \"borrowDate\": \"2024-11-30\",\n                \"returnDate\": \"2024-12-11\",\n                \"borrower\": {\n                    \"id\": 2,\n                    \"name\": \"reno\",\n                    \"email\": \"renofathoni@gmail.com\"\n                },\n                \"book\": {\n                    \"id\": \"69cb2004-c617-4980-9b46-3bf726a17f26\",\n                    \"title\": \"cihuy\",\n                    \"isbn\": \"1234567890122\"\n                },\n                \"status\": \"ON_TIME\"\n            },\n            {\n                \"id\": \"66651ba1-5f46-4c1e-9317-6fe8a6dc15e0\",\n                \"createdAt\": \"2024-11-29T18:36:29.567261\",\n                \"borrowDate\": \"2024-11-27\",\n                \"returnDate\": \"2024-11-28\",\n                \"borrower\": {\n                    \"id\": 1,\n                    \"name\": \"reno\",\n                    \"email\": \"renof@gmail.com\"\n                },\n                \"book\": {\n                    \"id\": \"69cb2004-c617-4980-9b46-3bf726a17f26\",\n                    \"title\": \"cihuy\",\n                    \"isbn\": \"1234567890122\"\n                },\n                \"status\": \"LATE\"\n            }\n        ],\n        \"page\": 1,\n        \"size\": 10,\n        \"totalData\": 3\n    }\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "local",
+			"value": "http://localhost:8080",
+			"type": "string"
+		}
+	]
+}
